@@ -1,0 +1,4 @@
+// 取小数点后n位数
+function getDecimal(num, n) {
+    return num.toFixed(n)
+}
