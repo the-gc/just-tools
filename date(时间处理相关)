@@ -1,0 +1,30 @@
+// 计算时间间隔
+const getDateRange = {
+    _byDay: (startDate, endDate) => {
+        let time = (new Date(startDate).getTime()) - (new Date(endDate).getTime());
+        return MSconvert(time);
+    },
+    _byWeek: (startDate, endDate) => {
+        var range = (new Date(endDate).getTime()) - (new Date(startDate).getTime());
+        var weekNum = Math.ceil(range / (7 * dayTime));
+        return weekNum ? `${weekNum}周` : 'N/A'
+    }
+};
+function MSconvert(time) {
+    let day = parseInt(time / 86400000);
+    let hour = parseInt(time % 86400000 / 3600000);
+    let min = parseInt(time % 86400000 % 3600000 / 60000);
+    if (day === 0) {
+        if (hour === 0) {
+            if (min === 0) {
+                return `1分钟`
+            }else {
+                return `${min}分钟`
+            }
+        }else {
+            return `${hour}小时${min}分钟`
+        }
+    }else {
+        return `${day}天${hour}小时${min}分钟`
+    }
+}
