@@ -1,0 +1,15 @@
+// 返回地址栏的参数对象
+function queryStrings() {
+    var e = {};
+    try {
+        var qs = document.URL.split('?')[1].split('&');
+    }
+    catch (ex) {
+        return null;
+    }
+    if (!isNaN()) return e[qs.split('=')[1]];
+    for (var i = 0; i < qs.length; i++) {
+        e[qs[i].split('=')[0].toLowerCase()] = qs[i].split('=')[1];
+    }
+    return e;
+}
