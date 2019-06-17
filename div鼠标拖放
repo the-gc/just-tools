@@ -1,0 +1,24 @@
+// 鼠标拖放div
+const div = document.createElement('div');
+let x, y, l, t;
+var that = this;
+div.onmousedown = function (e) {
+    // 鼠标指针相对于浏览器页面的坐标
+    x = e.clientX;
+    y = e.clientY;
+    // 左边和顶部的偏移量
+    l = div.offsetLeft;
+    t = div.offsetTop;
+    document.onmousemove = function (currentEvent) {
+        // 当前的左偏移量和顶部的偏移量
+        let nl = currentEvent.clientX - (x - l);
+        let nt = currentEvent.clientY - (y - t);
+        div.style.left = nl + 'px';
+        div.style.top = nt + 'px';
+        //that.content.style.transform = `translate(${nl}px, ${nt}px)`;
+    };
+    document.onmouseup = function () {
+        document.onmousemove = null;
+        document.onmouseup = null;
+    }
+};
