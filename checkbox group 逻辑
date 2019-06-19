@@ -1,0 +1,26 @@
+unchecked(node, id) {
+    node.checked = false;
+    delete this.checkedList[id];
+    this.updateNum();
+    document.querySelector('#footerCheckbox').checked = false;
+  }
+  isCheckedAll() {
+      let bool = true;
+      this.nodeList.every((item) => {
+          return item.node.checked ? true : bool = false;
+      });
+      return bool
+  }
+  checkedAll() {
+      this.nodeList.every(item => {
+          this.checked(item.node, item.id);
+          return true
+      });
+  }
+  uncheckedAll() {
+      this.checkedList = {};
+      this.nodeList.every(item => {
+          this.unchecked(item.node, item.id);
+          return true
+      });
+  }
